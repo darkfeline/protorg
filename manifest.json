@@ -3,7 +3,7 @@
 
   "name": "protorg",
   "description": "org-protocol",
-  "version": "0.1",
+  "version": "0.1.0",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
