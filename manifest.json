@@ -1,35 +1,14 @@
 {
   "manifest_version": 2,
 
-  "name": "DLRJ",
-  "description": "DLSite and RJ code helper",
+  "name": "protorg",
+  "description": "org-protocol",
   "version": "0.1",
-
-  "icons": {
-    "48": "icon48.png",
-    "128": "icon128.png"
-  },
-
-  "content_scripts": [
-    {
-      "matches": ["*://boards.4chan.org/*"],
-      "js": ["jquery-3.2.1.slim.min.js", "waitForKeyElements.js", "utils.js", "linkify.js"],
-      "run_at": "document_end",
-      "all_frames": true
-    },
-    {
-      "matches": ["*://www.dlsite.com/maniax/*/=/product_id/*"],
-      "js": ["jquery-3.2.1.slim.min.js", "utils.js", "dlsite.js"],
-      "run_at": "document_end",
-      "all_frames": true
-    },
-    {
-      "matches": ["*://hvdb.me/Dashboard/WorkDetails/*"],
-      "js": ["jquery-3.2.1.slim.min.js", "utils.js", "hvdb.js"],
-      "run_at": "document_end",
-      "all_frames": true
-    }
+  "permissions": [
+    "contextMenus",
+    "tabs"
   ],
-
-  "permissions": []
+  "background": {
+    "scripts": ["menu.js"]
+  }
 }
