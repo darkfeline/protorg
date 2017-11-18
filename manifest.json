@@ -3,7 +3,7 @@
 
   "name": "protorg",
   "description": "org-protocol",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -13,6 +13,20 @@
     "contextMenus",
     "tabs"
   ],
+  "commands": {
+    "store-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "store-link"
+    },
+    "capture": {
+      "suggested_key": {
+        "default": "Ctrl+Y"
+      },
+      "description": "capture"
+    }
+  },
   "background": {
     "scripts": ["menu.js"]
   }
