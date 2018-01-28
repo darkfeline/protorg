@@ -50,21 +50,21 @@
   }
 
   chrome.contextMenus.create({
-    title: 'store-link',
+    title: 'Store tab link',
     onclick: function(info, tab) {
       storeTabLink(tab);
     },
   });
 
   chrome.contextMenus.create({
-    title: 'capture',
+    title: 'Capture tab',
     onclick: function(info, tab) {
       captureTab(tab);
     },
   });
 
   chrome.contextMenus.create({
-    title: 'capture',
+    title: 'Capture selected text',
     contexts: ['selection'],
     onclick: function(info, tab) {
       chrome.tabs.update(tab.id, {
@@ -79,7 +79,7 @@
   });
 
   chrome.contextMenus.create({
-    title: 'capture-tabs',
+    title: 'Capture selected tabs',
     onclick: function(info, tab) {
       captureHighlightedTabs();
     },
