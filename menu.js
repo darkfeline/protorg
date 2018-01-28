@@ -39,14 +39,14 @@
     title: 'store-link',
     onclick: function(info, tab) {
       storeLink(tab);
-    }
+    },
   });
 
   chrome.contextMenus.create({
     title: 'capture',
     onclick: function(info, tab) {
       capture(tab);
-    }
+    },
   });
 
   chrome.contextMenus.create({
@@ -61,7 +61,7 @@
           body: info.selectionText,
         }),
       });
-    }
+    },
   });
 
   chrome.commands.onCommand.addListener(function(command) {
