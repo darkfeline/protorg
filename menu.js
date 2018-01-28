@@ -67,12 +67,12 @@
   chrome.commands.onCommand.addListener(function(command) {
     switch (command) {
     case 'store-link':
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         storeLink(tabs[0]);
       });
       break;
     case 'capture':
-      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         captureLink(tabs[0]);
       });
       break;
