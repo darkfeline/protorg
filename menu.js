@@ -55,7 +55,7 @@
     onclick: function(info, tab) {
       chrome.tabs.update(tab.id, {
         url: protoURL('capture', {
-          template: 'p',
+          template: 'T',
           url: tab.url,
           title: tab.title,
           body: info.selectionText,
