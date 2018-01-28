@@ -25,7 +25,7 @@
     });
   }
 
-  function captureLink(tab) {
+  function captureTab(tab) {
     chrome.tabs.update(tab.id, {
       url: protoURL('capture', {
         template: 'L',
@@ -43,7 +43,7 @@
     chrome.tabs.query({ highlighted: true, currentWindow: true }, async function(tabs) {
       for ( var i = 0; i < tabs.length; i++) {
         var tab = tabs[i];
-        captureLink(tab);
+        captureTab(tab);
         await sleep(500);
       };
     });
@@ -59,7 +59,7 @@
   chrome.contextMenus.create({
     title: 'capture',
     onclick: function(info, tab) {
-      captureLink(tab);
+      captureTab(tab);
     },
   });
 
@@ -94,7 +94,7 @@
       break;
     case 'capture':
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        captureLink(tabs[0]);
+        captureTab(tabs[0]);
       });
       break;
     }
