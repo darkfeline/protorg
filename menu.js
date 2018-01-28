@@ -16,7 +16,7 @@
     return url;
   }
 
-  function storeLink(tab) {
+  function storeTabLink(tab) {
     chrome.tabs.update(tab.id, {
       url: protoURL('store-link', {
         url: tab.url,
@@ -52,7 +52,7 @@
   chrome.contextMenus.create({
     title: 'store-link',
     onclick: function(info, tab) {
-      storeLink(tab);
+      storeTabLink(tab);
     },
   });
 
@@ -89,7 +89,7 @@
     switch (command) {
     case 'store':
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        storeLink(tabs[0]);
+        storeTabLink(tabs[0]);
       });
       break;
     case 'capture':
