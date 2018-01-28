@@ -25,7 +25,7 @@
     });
   }
 
-  function capture(tab) {
+  function captureLink(tab) {
     chrome.tabs.update(tab.id, {
       url: protoURL('capture', {
         template: 'L',
@@ -45,7 +45,7 @@
   chrome.contextMenus.create({
     title: 'capture',
     onclick: function(info, tab) {
-      capture(tab);
+      captureLink(tab);
     },
   });
 
@@ -73,7 +73,7 @@
       break;
     case 'capture':
       chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        capture(tabs[0]);
+        captureLink(tabs[0]);
       });
       break;
     }
