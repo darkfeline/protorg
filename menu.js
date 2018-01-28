@@ -35,6 +35,20 @@
     });
   }
 
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function captureHighlightedTabs() {
+    chrome.tabs.query({ highlighted: true, currentWindow: true }, async function(tabs) {
+      for ( var i = 0; i < tabs.length; i++) {
+        var tab = tabs[i];
+        captureLink(tab);
+        await sleep(500);
+      };
+    });
+  }
+
   chrome.contextMenus.create({
     title: 'store-link',
     onclick: function(info, tab) {
@@ -61,6 +75,13 @@
           body: info.selectionText,
         }),
       });
+    },
+  });
+
+  chrome.contextMenus.create({
+    title: 'capture-tabs',
+    onclick: function(info, tab) {
+      captureHighlightedTabs();
     },
   });
 
