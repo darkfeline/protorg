@@ -87,7 +87,7 @@
 
   chrome.commands.onCommand.addListener(function(command) {
     switch (command) {
-    case 'store-link':
+    case 'store':
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         storeLink(tabs[0]);
       });

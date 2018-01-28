@@ -14,7 +14,7 @@
     "tabs"
   ],
   "commands": {
-    "store-link": {
+    "store": {
       "suggested_key": {
         "default": "Ctrl+Shift+Y"
       },
