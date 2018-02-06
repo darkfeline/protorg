@@ -79,6 +79,7 @@
   });
 
   chrome.commands.onCommand.addListener(function(command) {
+    console.log('command: ' + command);
     switch (command) {
     case 'store':
       chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
