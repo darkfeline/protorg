@@ -39,11 +39,11 @@
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  function captureHighlightedTabs() {
+  function doWithHighlightedTabs(f) {
     chrome.tabs.query({ highlighted: true, currentWindow: true }, async function(tabs) {
       for ( var i = 0; i < tabs.length; i++) {
         var tab = tabs[i];
-        captureTab(tab);
+        f(tab);
         await sleep(500);
       };
     });
@@ -59,7 +59,7 @@
   chrome.contextMenus.create({
     title: 'Capture tabs',
     onclick: function(info, tab) {
-      captureHighlightedTabs();
+      doWithHighlightedTabs(captureTab);
     },
   });
 
@@ -87,7 +87,7 @@
       });
       break;
     case 'capture':
-      captureHighlightedTabs();
+      doWithHighlightedTabs(captureTab);
       break;
     }
   });
