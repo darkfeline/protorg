@@ -57,9 +57,9 @@
   });
 
   chrome.contextMenus.create({
-    title: 'Capture tab',
+    title: 'Capture tabs',
     onclick: function(info, tab) {
-      captureTab(tab);
+      captureHighlightedTabs();
     },
   });
 
@@ -78,13 +78,6 @@
     },
   });
 
-  chrome.contextMenus.create({
-    title: 'Capture selected tabs',
-    onclick: function(info, tab) {
-      captureHighlightedTabs();
-    },
-  });
-
   chrome.commands.onCommand.addListener(function(command) {
     switch (command) {
     case 'store':
@@ -93,9 +86,7 @@
       });
       break;
     case 'capture':
-      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        captureTab(tabs[0]);
-      });
+      captureHighlightedTabs();
       break;
     }
   });
