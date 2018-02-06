@@ -50,9 +50,9 @@
   }
 
   chrome.contextMenus.create({
-    title: 'Store tab link',
+    title: 'Store tab links',
     onclick: function(info, tab) {
-      storeTabLink(tab);
+      doWithHighlightedTabs(storeTabLink);
     },
   });
 
@@ -82,9 +82,7 @@
     console.log('command: ' + command);
     switch (command) {
     case 'store':
-      chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-        storeTabLink(tabs[0]);
-      });
+      doWithHighlightedTabs(storeTabLink);
       break;
     case 'capture':
       doWithHighlightedTabs(captureTab);
