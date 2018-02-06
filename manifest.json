@@ -18,13 +18,13 @@
       "suggested_key": {
         "default": "Ctrl+Shift+Y"
       },
-      "description": "Store tab link"
+      "description": "Store tab links"
     },
     "capture": {
       "suggested_key": {
         "default": "Ctrl+Y"
       },
-      "description": "Capture tab"
+      "description": "Capture tabs"
     }
   },
   "background": {
