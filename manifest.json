@@ -13,20 +13,6 @@
     "contextMenus",
     "tabs"
   ],
-  "commands": {
-    "storeLink": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Y"
-      },
-      "description": "Store tab link"
-    },
-    "capture": {
-      "suggested_key": {
-        "default": "Ctrl+Y"
-      },
-      "description": "Capture tabs"
-    }
-  },
   "background": {
     "scripts": ["menu.js"]
   }

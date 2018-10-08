@@ -1,6 +1,5 @@
 (function() {
   function main() {
-    // Context menu items
     chrome.contextMenus.create({
       title: 'Store tab link',
       onclick: function(info, tab) {
@@ -9,38 +8,11 @@
     });
 
     chrome.contextMenus.create({
-      title: 'Capture text',
-      onclick: function(info, tab) {
-        doWithHighlightedTabs(captureTab);
-      },
-    });
-
-    chrome.contextMenus.create({
-      title: 'Capture selected text',
+      title: 'Capture selection',
       contexts: ['selection'],
       onclick: function(info, tab) {
-        chrome.tabs.update(tab.id, {
-          url: protoURL('capture', {
-            template: 'T',
-            url: tab.url,
-            title: tab.title,
-            body: info.selectionText,
-          }),
-        });
+        captureText(tab, info.selectionText);
       },
-    });
-
-    // Commands
-    chrome.commands.onCommand.addListener(function(command) {
-      console.log('command: ' + command);
-      switch (command) {
-      case 'storeLink':
-        callWithCurrentTab(storeTabLink);
-        break;
-      case 'capture':
-        doWithHighlightedTabs(captureTab);
-        break;
-      }
     });
   }
 
@@ -54,12 +26,13 @@
     });
   }
 
-  function captureTab(tab) {
+  function captureText(tab, text) {
     chrome.tabs.update(tab.id, {
       url: protoURL('capture', {
-        template: 'L',
+        template: 'B',
         url: tab.url,
         title: tab.title,
+        body: text,
       }),
     });
   }
