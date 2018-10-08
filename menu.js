@@ -81,7 +81,7 @@
 
   function callWithCurrentTab(f) {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-      if tabs.length >= 1 {
+      if (tabs.length >= 1) {
         f(tabs[0])
       }
     });
@@ -89,7 +89,7 @@
 
   function callWithHighlightedTabs(f) {
     chrome.tabs.query({ highlighted: true, currentWindow: true }, function(tabs) {
-      for ( var i = 0; i < tabs.length; i++) {
+      for (var i = 0; i < tabs.length; i++) {
         f(tabs[i]);
       };
     });
