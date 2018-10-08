@@ -29,7 +29,7 @@
   function captureText(tab, text) {
     chrome.tabs.update(tab.id, {
       url: protoURL('capture', {
-        template: 'B',
+        template: 'Z',
         url: tab.url,
         title: tab.title,
         body: text,
