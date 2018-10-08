@@ -14,6 +14,13 @@
         captureText(tab, info.selectionText);
       },
     });
+
+  chrome.contextMenus.create({
+    title: 'Open source',
+    onclick: function(info, tab) {
+      openSource(tab);
+    },
+  });
   }
 
   // Org protocol functions
@@ -33,6 +40,14 @@
         url: tab.url,
         title: tab.title,
         body: text,
+      }),
+    });
+  }
+
+  function openSource(tab) {
+    chrome.tabs.update(tab.id, {
+      url: protoURL('open-source', {
+        url: tab.url,
       }),
     });
   }
