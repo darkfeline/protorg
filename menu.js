@@ -23,14 +23,13 @@
         captureText(tab, urls.join(''));
       },
     });
-  }
 
-  chrome.contextMenus.create({
-    title: 'Open source',
-    onclick: function(info, tab) {
-      openSource(tab);
-    },
-  });
+    chrome.contextMenus.create({
+      title: 'Open source',
+      onclick: function(info, tab) {
+        openSource(tab);
+      },
+    });
   }
 
   // Org protocol functions
