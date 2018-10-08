@@ -55,10 +55,6 @@
     return parts.join('&');
   }
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   function callWithCurrentTab(f) {
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       if tabs.length >= 1 {
