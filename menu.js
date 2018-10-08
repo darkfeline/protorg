@@ -2,14 +2,14 @@
   function main() {
     // Context menu items
     chrome.contextMenus.create({
-      title: 'Store tab links',
+      title: 'Store tab link',
       onclick: function(info, tab) {
-        doWithHighlightedTabs(storeTabLink);
+        storeTabLink(tab);
       },
     });
 
     chrome.contextMenus.create({
-      title: 'Capture tabs',
+      title: 'Capture text',
       onclick: function(info, tab) {
         doWithHighlightedTabs(captureTab);
       },
@@ -34,8 +34,8 @@
     chrome.commands.onCommand.addListener(function(command) {
       console.log('command: ' + command);
       switch (command) {
-      case 'store':
-        doWithHighlightedTabs(storeTabLink);
+      case 'storeLink':
+        callWithCurrentTab(storeTabLink);
         break;
       case 'capture':
         doWithHighlightedTabs(captureTab);
@@ -84,6 +84,14 @@
 
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function callWithCurrentTab(f) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      if tabs.length >= 1 {
+        f(tabs[0])
+      }
+    });
   }
 
   function doWithHighlightedTabs(f) {

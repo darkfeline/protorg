@@ -14,11 +14,11 @@
     "tabs"
   ],
   "commands": {
-    "store": {
+    "storeLink": {
       "suggested_key": {
         "default": "Ctrl+Shift+Y"
       },
-      "description": "Store tab links"
+      "description": "Store tab link"
     },
     "capture": {
       "suggested_key": {
