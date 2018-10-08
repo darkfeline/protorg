@@ -18,9 +18,13 @@
     chrome.contextMenus.create({
       title: 'Capture highlighted tabs',
       onclick: function(info, tab) {
-        var urls = [];
-        callWithHighlightedTabs(tab => urls.push(tab.url + '\n'));
-        captureText(tab, urls.join(''));
+        chrome.tabs.query({ highlighted: true, currentWindow: true }, function(tabs) {
+          var urls = [];
+          for (var i = 0; i < tabs.length; i++) {
+            urls.push(tabs[i].url + '\n');
+          }
+          captureText(tab, urls.join(''));
+        });
       },
     });
 
@@ -70,21 +74,12 @@
     return url;
   }
 
-  // Helper functions
   function formatQueryParams(params) {
     var parts = [];
     for (var key in params) {
       parts.push(`${key}=${encodeURIComponent(params[key])}`);
     }
     return parts.join('&');
-  }
-
-  function callWithHighlightedTabs(f) {
-    chrome.tabs.query({ highlighted: true, currentWindow: true }, function(tabs) {
-      for (var i = 0; i < tabs.length; i++) {
-        f(tabs[i]);
-      };
-    });
   }
 
   // Main
