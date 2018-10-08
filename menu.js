@@ -15,6 +15,16 @@
       },
     });
 
+    chrome.contextMenus.create({
+      title: 'Capture highlighted tabs',
+      onclick: function(info, tab) {
+        var urls = [];
+        callWithHighlightedTabs(tab => urls.push(tab.url + '\n'));
+        captureText(tab, urls.join(''));
+      },
+    });
+  }
+
   chrome.contextMenus.create({
     title: 'Open source',
     onclick: function(info, tab) {
@@ -78,12 +88,10 @@
     });
   }
 
-  function doWithHighlightedTabs(f) {
-    chrome.tabs.query({ highlighted: true, currentWindow: true }, async function(tabs) {
+  function callWithHighlightedTabs(f) {
+    chrome.tabs.query({ highlighted: true, currentWindow: true }, function(tabs) {
       for ( var i = 0; i < tabs.length; i++) {
-        var tab = tabs[i];
-        f(tab);
-        await sleep(500);
+        f(tabs[i]);
       };
     });
   }
