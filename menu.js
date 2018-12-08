@@ -61,7 +61,6 @@
     chrome.tabs.update(tab.id, {
       url: protoURL('capture', {
         template: 'Z',
-        title: tab.title,
         body: text,
       }),
     });
