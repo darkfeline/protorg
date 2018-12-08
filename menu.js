@@ -23,7 +23,7 @@
           for (var i = 0; i < tabs.length; i++) {
             urls.push(tabs[i].url + '\n');
           }
-          captureText(tab, urls.join(''));
+          captureTextOnly(tab, urls.join(''));
         });
       },
     });
@@ -51,6 +51,16 @@
       url: protoURL('capture', {
         template: 'Z',
         url: tab.url,
+        title: tab.title,
+        body: text,
+      }),
+    });
+  }
+
+  function captureTextOnly(tab, text) {
+    chrome.tabs.update(tab.id, {
+      url: protoURL('capture', {
+        template: 'Z',
         title: tab.title,
         body: text,
       }),
