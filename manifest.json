@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "protorg",
   "description": "Org mode interaction using Org protocol",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
