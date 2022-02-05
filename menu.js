@@ -34,6 +34,13 @@
         openSource(tab);
       },
     });
+
+    chrome.contextMenus.create({
+      title: 'Create roam ref note',
+      onclick: function(info, tab) {
+        createRoamRefNote(tab, info.selectionText);
+      },
+    });
   }
 
   // Org protocol functions
@@ -70,6 +77,17 @@
     chrome.tabs.update(tab.id, {
       url: protoURL('open-source', {
         url: tab.url,
+      }),
+    });
+  }
+
+  function createRoamRefNote(tab, text) {
+    chrome.tabs.update(tab.id, {
+      url: protoURL('roam-ref', {
+        template: 'r',
+        ref: tab.url,
+        title: tab.title,
+        body: text,
       }),
     });
   }
