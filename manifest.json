@@ -5,7 +5,7 @@
   "version": "0.7.0",
   "icons": {
     "16": "icon16.png",
-    "48": "icon48.png",
+    "48": "icon48.png"
   },
   "permissions": [
     "contextMenus",
